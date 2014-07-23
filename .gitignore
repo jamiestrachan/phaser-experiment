@@ -1,0 +1,10 @@
+.DS_Store
+bin/*
+node_modules/*
+obj/*
+deploy/*
+*.csproj
+*.csproj.user
+*.sln
+*.suo
+.idea/*

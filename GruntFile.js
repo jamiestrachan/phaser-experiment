@@ -3,6 +3,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -14,6 +15,9 @@ module.exports = function (grunt) {
                 }
             }
         },
+        jshint: {
+            src: [ "src/game/**/*.js" ]
+        },
         concat: {
             dist: {
                 src: [  "src/lib/**/*.js",
@@ -24,7 +28,7 @@ module.exports = function (grunt) {
         },
         watch: {
             files: 'src/**/*.js',
-            tasks: ['concat']
+            tasks: ['jshint', 'concat']
         },
         open: {
             dev: {
@@ -33,6 +37,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['concat', 'connect', 'open', 'watch']);
+    grunt.registerTask('default', ['jshint', 'concat', 'connect', 'open', 'watch']);
 
 }
